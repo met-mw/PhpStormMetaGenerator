@@ -9,7 +9,7 @@
 ## Установка
 
 ```
-composer require mediartis/phpstormmetagenerator
+composer require met_mw/phpstormmetagenerator
 ```
 
 ## Пример использования
