@@ -1,3 +1,9 @@
+[![Build Status](https://travis-ci.org/met-mw/PhpStormMetaGenerator.svg?branch=master)](https://travis-ci.org/met-mw/PhpStormMetaGenerator)
+[![Coverage Status](https://coveralls.io/repos/github/met-mw/PhpStormMetaGenerator/badge.svg?branch=master)](https://coveralls.io/github/met-mw/PhpStormMetaGenerator?branch=master)
+[![Latest Stable Version](https://poser.pugx.org/met_mw/phpstormmetagenerator/v/stable)](https://packagist.org/packages/met_mw/phpstormmetagenerator)
+[![Total Downloads](https://poser.pugx.org/met_mw/phpstormmetagenerator/downloads)](https://packagist.org/packages/met_mw/phpstormmetagenerator)
+[![Latest Unstable Version](https://poser.pugx.org/met_mw/phpstormmetagenerator/v/unstable)](https://packagist.org/packages/met_mw/phpstormmetagenerator)
+[![License](https://poser.pugx.org/met_mw/phpstormmetagenerator/license)](https://packagist.org/packages/met_mw/phpstormmetagenerator)
 # Генератор phpStorm-метафайла для фабрик объектов.
 
 ## Установка
