@@ -1,0 +1,23 @@
+{
+    "name": "met_mw/phpstormmetagenerator",
+    "type": "library",
+    "keywords": ["phpStorm", "HostCMS", "metagenerator", "meta", "generator", ".phpstorm.meta.php"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "met-mw",
+            "email": "met-mw@rambler.ru"
+        }
+    ],
+    "repositories": [],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^5.4",
+        "satooshi/php-coveralls": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "PhpStormMetaGenerator\\": "src/PhpStormMetaGenerator"
+        }
+    }
+}
