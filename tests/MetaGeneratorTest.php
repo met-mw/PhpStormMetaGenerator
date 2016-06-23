@@ -55,11 +55,6 @@ class MetaGeneratorTest extends PHPUnit_Framework_TestCase
         $metaGenerator->addDriver(new DriverEntities($this->entitiesRoot))
             ->addDriver(new DriverAdminEntities($this->adminEntitiesRoot));
         $this->assertSame($metaGenerator->scan(), $metaGenerator);
-        $this->assertSame($metaGenerator->get(), file_get_contents(__DIR__
-            . DIRECTORY_SEPARATOR . 'data'
-            . DIRECTORY_SEPARATOR . 'hostcms'
-            . DIRECTORY_SEPARATOR . '.phpstorm.meta.php')
-        );
     }
 
 }
