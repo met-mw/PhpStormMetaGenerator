@@ -22,9 +22,19 @@ class MetaGeneratorTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($metaGenerator->getMetaFilePath(), 'path1');
         $metaGenerator->setMetaFilePath('path2');
         $this->assertEquals($metaGenerator->getMetaFilePath(), 'path2');
+
+        $throw = false;
+        try {
+            $metaGenerator->setMetaFilePath(1);
+        } catch(InvalidArgumentException $e) {
+            $throw = true;
+        }
+        if (!$throw) {
+            $this->fail('Set meta-file path exception is not thrown.');
+        }
     }
 
-    public function testNamespaces()
+    public function testDrivers()
     {
         $metaGenerator = new MetaGenerator($this->metaFilePath);
         $this->assertTrue(empty($metaGenerator->getDrivers()));
@@ -37,6 +47,15 @@ class MetaGeneratorTest extends PHPUnit_Framework_TestCase
         $metaGenerator->addDriver($secondDriver);
         $this->assertEquals(sizeof($metaGenerator->getDrivers()), 2);
         $this->assertSame($metaGenerator->getDrivers()[1], $secondDriver);
+    }
+
+    public function testScan()
+    {
+        $metaGenerator = new MetaGenerator($this->metaFilePath);
+        $metaGenerator->addDriver(new DriverEntities($this->entitiesRoot))
+            ->addDriver(new DriverAdminEntities($this->adminEntitiesRoot));
+        $this->assertSame($metaGenerator->scan(), $metaGenerator);
+        $this->assertEquals($metaGenerator->get(), file_get_contents(__DIR__ . '/data/hostcms/.phpstorm.meta.php'));
     }
 
 }

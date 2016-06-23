@@ -114,8 +114,12 @@ class MetaGenerator implements MetaGeneratorInterface
      */
     public function setMetaFilePath($metaFilePath)
     {
+        if (!is_string($metaFilePath)) {
+            throw new InvalidArgumentException('Meta-file path must be a string.');
+        }
+
         $dirName = dirname($metaFilePath);
-        if (!file_exists($dirName) || !is_dir($dirName)) {
+        if (!is_dir($dirName)) {
             throw new InvalidArgumentException('Invalid file path.');
         }
 

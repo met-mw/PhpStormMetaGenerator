@@ -31,8 +31,8 @@ $entitiesPath = CMS_FOLDER . 'modules';
 $adminEntitiesPath = CMS_FOLDER . 'adminentities';
 
 $metaGenerator = new MetaGenerator($phpStormMetaFilePath);
-$metaGenerator->addDriver(new EntitiesDriver($entitiesPath)) // Add entities driver
-    ->addDriver(new AdminEntitiesDriver($adminEntitiesPath)) // Add admin-entities driver
+$metaGenerator->addDriver(new DriverEntities($entitiesPath)) // Add entities driver
+    ->addDriver(new DriverAdminEntities($adminEntitiesPath)) // Add admin-entities driver
     ->scan()
     ->printFile();
 ```
