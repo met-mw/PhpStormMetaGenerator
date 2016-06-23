@@ -2,16 +2,16 @@
 namespace PhpStormMetaGenerator\Drivers\HostCMS;
 
 
-use PhpStormMetaGenerator\AbstractDriver;
-use PhpStormMetaGenerator\Interfaces\InterfaceDriver;
+use PhpStormMetaGenerator\DriverAbstract;
+use PhpStormMetaGenerator\Interfaces\DriverInterface;
 
 /**
  * Driver for HostCMS to search classes at administrator's area.
  *
- * Class AdminEntitiesDriver
+ * Class DriverAdminEntities
  * @package PhpStormMetaGenerator\Drivers\HostCMS
  */
-class AdminEntitiesDriver extends AbstractDriver implements InterfaceDriver
+class DriverAdminEntities extends DriverAbstract implements DriverInterface
 {
 
     /** Administrator's area classes name prefix */

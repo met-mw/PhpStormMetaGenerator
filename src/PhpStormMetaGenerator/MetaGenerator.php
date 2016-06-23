@@ -3,8 +3,8 @@ namespace PhpStormMetaGenerator;
 
 
 use InvalidArgumentException;
-use PhpStormMetaGenerator\Interfaces\InterfaceMetaGenerator;
-use PhpStormMetaGenerator\Interfaces\InterfaceDriver;
+use PhpStormMetaGenerator\Interfaces\MetaGeneratorInterface;
+use PhpStormMetaGenerator\Interfaces\DriverInterface;
 
 /**
  * PhpStorm meta-file generator.
@@ -13,12 +13,12 @@ use PhpStormMetaGenerator\Interfaces\InterfaceDriver;
  * Class MetaGenerator
  * @package PhpStormMetaGenerator
  */
-class MetaGenerator implements InterfaceMetaGenerator
+class MetaGenerator implements MetaGeneratorInterface
 {
 
     /** @var string */
     protected $metaFilePath;
-    /** @var InterfaceDriver[] */
+    /** @var DriverInterface[] */
     protected $drivers;
 
     /**
@@ -33,10 +33,10 @@ class MetaGenerator implements InterfaceMetaGenerator
     /**
      * Add driver
      *
-     * @param InterfaceDriver $driver
+     * @param DriverInterface $driver
      * @return $this
      */
-    public function addDriver(InterfaceDriver $driver)
+    public function addDriver(DriverInterface $driver)
     {
         $this->drivers[] = $driver;
         return $this;
@@ -60,7 +60,7 @@ class MetaGenerator implements InterfaceMetaGenerator
     /**
      * Get added drivers
      *
-     * @return InterfaceDriver[]
+     * @return DriverInterface[]
      */
     public function getDrivers()
     {

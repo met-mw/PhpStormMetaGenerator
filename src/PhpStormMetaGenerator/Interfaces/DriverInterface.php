@@ -5,10 +5,10 @@ namespace PhpStormMetaGenerator\Interfaces;
 /**
  * Driver interface
  *
- * Interface InterfaceDriver
+ * Interface DriverInterface
  * @package PhpStormMetaGenerator\Interfaces
  */
-interface InterfaceDriver
+interface DriverInterface
 {
 
     /**

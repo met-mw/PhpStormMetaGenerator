@@ -3,16 +3,16 @@ namespace PhpStormMetaGenerator;
 
 
 use InvalidArgumentException;
-use PhpStormMetaGenerator\Interfaces\InterfaceDriver;
+use PhpStormMetaGenerator\Interfaces\DriverInterface;
 
 /**
  * Abstract driver class
  * (Extend this to develop any drivers)
  *
- * Class AbstractDriver
+ * Class DriverAbstract
  * @package PhpStormMetaGenerator
  */
-abstract class AbstractDriver implements InterfaceDriver
+abstract class DriverAbstract implements DriverInterface
 {
 
     /** @var string Driver root path */

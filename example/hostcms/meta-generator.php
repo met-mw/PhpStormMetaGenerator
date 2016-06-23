@@ -2,15 +2,15 @@
 /**
  * Using the library as an example HostCMS
  */
-require_once('../../src/PhpStormMetaGenerator/Interfaces/InterfaceDriver.php');
-require_once('../../src/PhpStormMetaGenerator/Interfaces/InterfaceMetaGenerator.php');
-require_once('../../src/PhpStormMetaGenerator/AbstractDriver.php');
+require_once('../../src/PhpStormMetaGenerator/Interfaces/DriverInterface.php');
+require_once('../../src/PhpStormMetaGenerator/Interfaces/MetaGeneratorInterface.php');
+require_once('../../src/PhpStormMetaGenerator/DriverAbstract.php');
 require_once('../../src/PhpStormMetaGenerator/MetaGenerator.php');
-require_once('../../src/PhpStormMetaGenerator/Drivers/HostCMS/EntitiesDriver.php');
-require_once('../../src/PhpStormMetaGenerator/Drivers/HostCMS/AdminEntitiesDriver.php');
+require_once('../../src/PhpStormMetaGenerator/Drivers/HostCMS/DriverEntities.php');
+require_once('../../src/PhpStormMetaGenerator/Drivers/HostCMS/DriverAdminEntities.php');
 
-use PhpStormMetaGenerator\Drivers\HostCMS\AdminEntitiesDriver;
-use PhpStormMetaGenerator\Drivers\HostCMS\EntitiesDriver;
+use PhpStormMetaGenerator\Drivers\HostCMS\DriverAdminEntities;
+use PhpStormMetaGenerator\Drivers\HostCMS\DriverEntities;
 use PhpStormMetaGenerator\MetaGenerator;
 
 // Replace it by project root path
@@ -25,7 +25,7 @@ $entitiesPath = CMS_FOLDER . 'modules';
 $adminEntitiesPath = CMS_FOLDER . 'adminentities';
 
 $metaGenerator = new MetaGenerator($phpStormMetaFilePath);
-$metaGenerator->addDriver(new EntitiesDriver($entitiesPath)) // Add entities driver
-    ->addDriver(new AdminEntitiesDriver($adminEntitiesPath)) // Add admin-entities driver
+$metaGenerator->addDriver(new DriverEntities($entitiesPath)) // Add entities driver
+    ->addDriver(new DriverAdminEntities($adminEntitiesPath)) // Add admin-entities driver
     ->scan()
     ->printFile();

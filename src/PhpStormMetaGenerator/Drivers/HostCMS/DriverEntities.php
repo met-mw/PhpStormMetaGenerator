@@ -3,16 +3,16 @@ namespace PhpStormMetaGenerator\Drivers\HostCMS;
 
 
 use InvalidArgumentException;
-use PhpStormMetaGenerator\AbstractDriver;
-use PhpStormMetaGenerator\Interfaces\InterfaceDriver;
+use PhpStormMetaGenerator\DriverAbstract;
+use PhpStormMetaGenerator\Interfaces\DriverInterface;
 
 /**
  * Driver for HostCMS to search entities classes.
  *
- * Class EntitiesDriver
+ * Class DriverEntities
  * @package PhpStormMetaGenerator\Drivers\HostCMS
  */
-class EntitiesDriver extends AbstractDriver implements InterfaceDriver
+class DriverEntities extends DriverAbstract implements DriverInterface
 {
 
     /** Model-file name */

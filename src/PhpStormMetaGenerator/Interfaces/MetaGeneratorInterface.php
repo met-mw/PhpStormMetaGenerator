@@ -2,16 +2,22 @@
 namespace PhpStormMetaGenerator\Interfaces;
 
 
-interface InterfaceMetaGenerator
+/**
+ * Meta generator interface
+ *
+ * Interface MetaGeneratorInterface
+ * @package PhpStormMetaGenerator\Interfaces
+ */
+interface MetaGeneratorInterface
 {
 
     /**
      * Add driver
      *
-     * @param InterfaceDriver $driver
+     * @param DriverInterface $driver
      * @return $this
      */
-    public function addDriver(InterfaceDriver $driver);
+    public function addDriver(DriverInterface $driver);
 
     /**
      * Get meta as string
@@ -23,7 +29,7 @@ interface InterfaceMetaGenerator
     /**
      * Get added drivers
      *
-     * @return InterfaceDriver[]
+     * @return DriverInterface[]
      */
     public function getDrivers();
 

@@ -1,6 +1,6 @@
 <?php
-use PhpStormMetaGenerator\Drivers\HostCMS\AdminEntitiesDriver;
-use PhpStormMetaGenerator\Drivers\HostCMS\EntitiesDriver;
+use PhpStormMetaGenerator\Drivers\HostCMS\DriverAdminEntities;
+use PhpStormMetaGenerator\Drivers\HostCMS\DriverEntities;
 use PhpStormMetaGenerator\MetaGenerator;
 
 class MetaGeneratorTest extends PHPUnit_Framework_TestCase
@@ -29,8 +29,8 @@ class MetaGeneratorTest extends PHPUnit_Framework_TestCase
         $metaGenerator = new MetaGenerator($this->metaFilePath);
         $this->assertTrue(empty($metaGenerator->getDrivers()));
 
-        $firstDriver = new EntitiesDriver($this->entitiesRoot);
-        $secondDriver = new AdminEntitiesDriver($this->adminEntitiesRoot);
+        $firstDriver = new DriverEntities($this->entitiesRoot);
+        $secondDriver = new DriverAdminEntities($this->adminEntitiesRoot);
         $metaGenerator->addDriver($firstDriver);
         $this->assertEquals(sizeof($metaGenerator->getDrivers()), 1);
         $this->assertSame($metaGenerator->getDrivers()[0], $firstDriver);
