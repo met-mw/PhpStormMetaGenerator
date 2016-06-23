@@ -1,5 +1,6 @@
 <?php
-use PhpStormMetaGenerator\Classes\HostCMS\AdminEntitiesNamespace;
+
+use PhpStormMetaGenerator\Drivers\HostCMS\AdminEntitiesDriver;
 
 class HostCMSAdminNamespaceTest extends PHPUnit_Framework_TestCase
 {
@@ -8,13 +9,13 @@ class HostCMSAdminNamespaceTest extends PHPUnit_Framework_TestCase
 
     public function testSets()
     {
-        $namespace = new AdminEntitiesNamespace($this->root);
+        $namespace = new AdminEntitiesDriver($this->root);
         $this->assertSame($namespace->setRoot($this->root), $namespace);
     }
 
     public function testScan()
     {
-        $namespace = new AdminEntitiesNamespace($this->root);
+        $namespace = new AdminEntitiesDriver($this->root);
 
         $this->assertSame($namespace->scan(), $namespace);
         $this->assertEquals($namespace->getClasses(), ['Admin_Form_Entity_Test1', 'Admin_Form_Entity_Test2']);

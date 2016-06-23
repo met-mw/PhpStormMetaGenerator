@@ -1,23 +1,36 @@
 <?php
-namespace PhpStormMetaGenerator\Classes\HostCMS;
+namespace PhpStormMetaGenerator\Drivers\HostCMS;
 
 
 use InvalidArgumentException;
-use PhpStormMetaGenerator\Classes\AbstractNamespace;
-use PhpStormMetaGenerator\Interfaces\InterfaceNamespace;
+use PhpStormMetaGenerator\AbstractDriver;
+use PhpStormMetaGenerator\Interfaces\InterfaceDriver;
 
-class EntitiesNamespace extends AbstractNamespace implements InterfaceNamespace
+/**
+ * Driver for HostCMS to search entities classes.
+ *
+ * Class EntitiesDriver
+ * @package PhpStormMetaGenerator\Drivers\HostCMS
+ */
+class EntitiesDriver extends AbstractDriver implements InterfaceDriver
 {
 
+    /** Model-file name */
     const SEARCH_FILE_NAME = 'model.php';
 
-    /** @var string[] */
+    /** @var string[] Founded classes list */
     protected $classes = [];
 
-    protected function calcClassNameByFilePath($path)
+    /**
+     * Get the entity's class by file path
+     *
+     * @param string $path Path to model-file
+     * @return string
+     */
+    protected function getFileNameByPath($path)
     {
         if (!file_exists($path) || !is_file($path)) {
-            throw new InvalidArgumentException('Должен быть указан путь к файлу.');
+            throw new InvalidArgumentException('Path must be a file-path.');
         }
 
         $classNameFragments = ['Model'];
@@ -32,7 +45,7 @@ class EntitiesNamespace extends AbstractNamespace implements InterfaceNamespace
     }
 
     /**
-     * Получить все найнеднные классы в заданном пространстве имён
+     * Get founded classes
      *
      * @return string[]
      */
@@ -42,9 +55,9 @@ class EntitiesNamespace extends AbstractNamespace implements InterfaceNamespace
     }
 
     /**
-     * Сканировать заданную директорию на предмет удовлетворябщих шаблону файлов
+     * Scan driver root directory to find classes
      *
-     * @param string|null $directoryPath Путь к сканируемой директории
+     * @param string|null $directoryPath Scanned directory path (need for recursive scan)
      * @return $this
      */
     public function scan($directoryPath = null)
@@ -61,14 +74,14 @@ class EntitiesNamespace extends AbstractNamespace implements InterfaceNamespace
                 continue;
             }
 
-            $this->classes[] = $this->calcClassNameByFilePath($currentElementPath);
+            $this->classes[] = $this->getFileNameByPath($currentElementPath);
         }
 
         return $this;
     }
 
     /**
-     * Вывести разметку классов пространства имён
+     * Render driver meta
      *
      * @return void
      */

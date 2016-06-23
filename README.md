@@ -4,34 +4,38 @@
 [![Total Downloads](https://poser.pugx.org/met_mw/phpstormmetagenerator/downloads)](https://packagist.org/packages/met_mw/phpstormmetagenerator)
 [![Latest Unstable Version](https://poser.pugx.org/met_mw/phpstormmetagenerator/v/unstable)](https://packagist.org/packages/met_mw/phpstormmetagenerator)
 [![License](https://poser.pugx.org/met_mw/phpstormmetagenerator/license)](https://packagist.org/packages/met_mw/phpstormmetagenerator)
-# Генератор phpStorm-метафайла для фабрик объектов.
+# PhpStorm meta-file generator (.phpstorm.meta.php).
 
-## Установка
-
+## Install
 ```
 composer require met_mw/phpstormmetagenerator
 ```
 
-## Пример использования
-Создаём файл со следующим кодом и запускаем его
-
-### HostCMS
+## Example
+See the folder "example" at package's root.
 
 ```
-use PhpStormMetaGenerator\Classes\HostCMS\AdminEntitiesNamespace;
-use PhpStormMetaGenerator\Classes\HostCMS\EntitiesNamespace;
-use PhpStormMetaGenerator\Classes\MetaGenerator;
+use PhpStormMetaGenerator\Drivers\HostCMS\AdminEntitiesDriver;
+use PhpStormMetaGenerator\Drivers\HostCMS\EntitiesDriver;
+use PhpStormMetaGenerator\MetaGenerator;
 
-// Путь к создаваемому мета-файлу
+// Replace it by project root path
+const CMS_FOLDER = '..' . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR
+    . 'tests' . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'hostcms' . DIRECTORY_SEPARATOR;
+
+// Meta-file path
 $phpStormMetaFilePath = CMS_FOLDER . '.phpstorm.meta.php';
-// Путь к директории, содержащей ORM-сущности
+// Modules directory path
 $entitiesPath = CMS_FOLDER . 'modules';
-// Путь к директории, содержащей специальные сущности панели администратора  
-$adminEntitiesPath = CMS_FOLDER . 'modules' . DIRECTORY_SEPARATOR . 'admin' . DIRECTORY_SEPARATOR . 'form' . DIRECTORY_SEPARATOR . 'entity';
+// Administrator's area classes directory path
+$adminEntitiesPath = CMS_FOLDER . 'adminentities';
 
 $metaGenerator = new MetaGenerator($phpStormMetaFilePath);
-$metaGenerator->addNamespace(new EntitiesNamespace($entitiesPath)) // Добавляем пространство имён ORM-сущностей
-    ->addNamespace(new AdminEntitiesNamespace($adminEntitiesPath)) // Добавляем пространство имён сущностей панели администратора
-    ->scan() // Сканируем добавленные пространства имён
-    ->printFile(); // Пишем сгенерированные мета-данные в файл
+$metaGenerator->addDriver(new EntitiesDriver($entitiesPath)) // Add entities driver
+    ->addDriver(new AdminEntitiesDriver($adminEntitiesPath)) // Add admin-entities driver
+    ->scan()
+    ->printFile();
 ```
+
+## License
+The met-mw/PhpStormMetaGenerator package is open-sourced software licensed under the **[MIT license](https://opensource.org/licenses/MIT)**

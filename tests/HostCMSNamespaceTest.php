@@ -1,5 +1,6 @@
 <?php
-use PhpStormMetaGenerator\Classes\HostCMS\EntitiesNamespace;
+
+use PhpStormMetaGenerator\Drivers\HostCMS\EntitiesDriver;
 
 class HostCMSNamespaceTest extends PHPUnit_Framework_TestCase
 {
@@ -8,13 +9,13 @@ class HostCMSNamespaceTest extends PHPUnit_Framework_TestCase
 
     public function testSets()
     {
-        $namespace = new EntitiesNamespace($this->root);
+        $namespace = new EntitiesDriver($this->root);
         $this->assertSame($namespace->setRoot($this->root), $namespace);
     }
 
     public function testScan()
     {
-        $namespace = new EntitiesNamespace($this->root);
+        $namespace = new EntitiesDriver($this->root);
 
         $this->assertSame($namespace->scan(), $namespace);
         $this->assertEquals($namespace->getClasses(), ['Module1_Model', 'Module1_Module1sub_Model']);

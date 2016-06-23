@@ -1,20 +1,27 @@
 <?php
-namespace PhpStormMetaGenerator\Classes\HostCMS;
+namespace PhpStormMetaGenerator\Drivers\HostCMS;
 
 
-use PhpStormMetaGenerator\Classes\AbstractNamespace;
-use PhpStormMetaGenerator\Interfaces\InterfaceNamespace;
+use PhpStormMetaGenerator\AbstractDriver;
+use PhpStormMetaGenerator\Interfaces\InterfaceDriver;
 
-class AdminEntitiesNamespace extends AbstractNamespace implements InterfaceNamespace
+/**
+ * Driver for HostCMS to search classes at administrator's area.
+ *
+ * Class AdminEntitiesDriver
+ * @package PhpStormMetaGenerator\Drivers\HostCMS
+ */
+class AdminEntitiesDriver extends AbstractDriver implements InterfaceDriver
 {
 
+    /** Administrator's area classes name prefix */
     const PREFIX = 'Admin_Form_Entity_';
 
-    /** @var string[] */
+    /** @var string[] Founded classes list */
     protected $classes = [];
 
     /**
-     * Получить все найнеднные классы в заданном пространстве имён
+     * Get founded classes
      *
      * @return string[]
      */
@@ -24,9 +31,9 @@ class AdminEntitiesNamespace extends AbstractNamespace implements InterfaceNames
     }
 
     /**
-     * Сканировать заданную директорию на предмет удовлетворябщих шаблону файлов
+     * Scan driver root directory to find classes
      *
-     * @param string|null $directoryPath Путь к сканируемой директории
+     * @param string|null $directoryPath Scanned directory path (need for recursive scan)
      * @return $this
      */
     public function scan($directoryPath = null)
@@ -47,7 +54,7 @@ class AdminEntitiesNamespace extends AbstractNamespace implements InterfaceNames
     }
 
     /**
-     * Вывести разметку классов пространства имён
+     * Render driver meta
      *
      * @return void
      */

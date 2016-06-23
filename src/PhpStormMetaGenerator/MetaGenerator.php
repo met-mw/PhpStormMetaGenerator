@@ -1,18 +1,25 @@
 <?php
-namespace PhpStormMetaGenerator\Classes;
+namespace PhpStormMetaGenerator;
 
 
 use InvalidArgumentException;
 use PhpStormMetaGenerator\Interfaces\InterfaceMetaGenerator;
-use PhpStormMetaGenerator\Interfaces\InterfaceNamespace;
+use PhpStormMetaGenerator\Interfaces\InterfaceDriver;
 
+/**
+ * PhpStorm meta-file generator.
+ * Creates ".phpstorm.meta.php" file
+ *
+ * Class MetaGenerator
+ * @package PhpStormMetaGenerator
+ */
 class MetaGenerator implements InterfaceMetaGenerator
 {
 
     /** @var string */
     protected $metaFilePath;
-    /** @var InterfaceNamespace[] */
-    protected $namespaces;
+    /** @var InterfaceDriver[] */
+    protected $drivers;
 
     /**
      * MetaGenerator constructor.
@@ -24,19 +31,19 @@ class MetaGenerator implements InterfaceMetaGenerator
     }
 
     /**
-     * Добавить пространство имён
+     * Add driver
      *
-     * @param InterfaceNamespace $namespace
+     * @param InterfaceDriver $driver
      * @return $this
      */
-    public function addNamespace(InterfaceNamespace $namespace)
+    public function addDriver(InterfaceDriver $driver)
     {
-        $this->namespaces[] = $namespace;
+        $this->drivers[] = $driver;
         return $this;
     }
 
     /**
-     * Получить содержимое мета-файла в виде строки
+     * Get meta as string
      *
      * @return string
      */
@@ -51,16 +58,18 @@ class MetaGenerator implements InterfaceMetaGenerator
     }
 
     /**
-     * Получить массив пространств имён
+     * Get added drivers
      *
-     * @return InterfaceNamespace[]
+     * @return InterfaceDriver[]
      */
-    public function getNamespaces()
+    public function getDrivers()
     {
-        return $this->namespaces;
+        return $this->drivers;
     }
 
     /**
+     * Get meta-file path
+     *
      * @return string
      */
     public function getMetaFilePath()
@@ -69,7 +78,7 @@ class MetaGenerator implements InterfaceMetaGenerator
     }
 
     /**
-     * Записать содержимое в файл
+     * Print meta to file
      *
      * @return $this
      */
@@ -79,7 +88,7 @@ class MetaGenerator implements InterfaceMetaGenerator
     }
 
     /**
-     * Вывести содержимое мета-файла
+     * Render meta
      *
      * @return $this
      */
@@ -90,7 +99,7 @@ class MetaGenerator implements InterfaceMetaGenerator
             '   /** @noinspection PhpIllegalArrayKeyTypeInspection */', PHP_EOL, PHP_EOL,
             '   $STATIC_METHOD_TYPES = array(', PHP_EOL;
 
-        foreach ($this->getNamespaces() as $namespace) {
+        foreach ($this->getDrivers() as $namespace) {
             $namespace->render();
         }
 
@@ -98,16 +107,16 @@ class MetaGenerator implements InterfaceMetaGenerator
     }
 
     /**
-     * Установить путь к мета-файлу
+     * Set meta-file path
      *
-     * @param string $metaFilePath
+     * @param string $metaFilePath Meta-file path
      * @return $this
      */
     public function setMetaFilePath($metaFilePath)
     {
         $dirName = dirname($metaFilePath);
         if (!file_exists($dirName) || !is_dir($dirName)) {
-            throw new InvalidArgumentException('Некорректный путь к файлу.');
+            throw new InvalidArgumentException('Invalid file path.');
         }
 
         $this->metaFilePath = $metaFilePath;
@@ -115,14 +124,14 @@ class MetaGenerator implements InterfaceMetaGenerator
     }
 
     /**
-     * Сканировать все установленные пространства имён
+     * Scan project
      *
      * @return $this
      */
     public function scan()
     {
-        foreach ($this->getNamespaces() as $namespace) {
-            $namespace->scan();
+        foreach ($this->getDrivers() as $driver) {
+            $driver->scan();
         }
 
         return $this;

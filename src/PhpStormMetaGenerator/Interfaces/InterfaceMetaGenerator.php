@@ -6,56 +6,58 @@ interface InterfaceMetaGenerator
 {
 
     /**
-     * Добавить пространство имён
+     * Add driver
      *
-     * @param InterfaceNamespace $namespace
+     * @param InterfaceDriver $driver
      * @return $this
      */
-    public function addNamespace(InterfaceNamespace $namespace);
+    public function addDriver(InterfaceDriver $driver);
 
     /**
-     * Получить содержимое мета-файла в виде строки
+     * Get meta as string
      *
      * @return string
      */
     public function get();
 
     /**
+     * Get added drivers
+     *
+     * @return InterfaceDriver[]
+     */
+    public function getDrivers();
+
+    /**
+     * Get meta-file path
+     *
      * @return string
      */
     public function getMetaFilePath();
 
     /**
-     * Получить массив пространств имён
-     *
-     * @return InterfaceNamespace[]
-     */
-    public function getNamespaces();
-
-    /**
-     * Записать содержимое в файл
+     * Print meta to file
      *
      * @return $this
      */
     public function printFile();
 
     /**
-     * Вывести содержимое мета-файла
+     * Render meta
      *
      * @return $this
      */
     public function render();
 
     /**
-     * Установить путь к мета-файлу
+     * Set meta-file path
      *
-     * @param string $metaFilePath
+     * @param string $metaFilePath Meta-file path
      * @return $this
      */
     public function setMetaFilePath($metaFilePath);
 
     /**
-     * Сканировать все установленные пространства имён
+     * Scan project
      *
      * @return $this
      */

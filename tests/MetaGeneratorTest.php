@@ -1,7 +1,7 @@
 <?php
-use PhpStormMetaGenerator\Classes\HostCMS\AdminEntitiesNamespace;
-use PhpStormMetaGenerator\Classes\HostCMS\EntitiesNamespace;
-use PhpStormMetaGenerator\Classes\MetaGenerator;
+use PhpStormMetaGenerator\Drivers\HostCMS\AdminEntitiesDriver;
+use PhpStormMetaGenerator\Drivers\HostCMS\EntitiesDriver;
+use PhpStormMetaGenerator\MetaGenerator;
 
 class MetaGeneratorTest extends PHPUnit_Framework_TestCase
 {
@@ -27,16 +27,16 @@ class MetaGeneratorTest extends PHPUnit_Framework_TestCase
     public function testNamespaces()
     {
         $metaGenerator = new MetaGenerator($this->metaFilePath);
-        $this->assertTrue(empty($metaGenerator->getNamespaces()));
+        $this->assertTrue(empty($metaGenerator->getDrivers()));
 
-        $firstNamespace = new EntitiesNamespace($this->entitiesRoot);
-        $secondNamespace = new AdminEntitiesNamespace($this->adminEntitiesRoot);
-        $metaGenerator->addNamespace($firstNamespace);
-        $this->assertEquals(sizeof($metaGenerator->getNamespaces()), 1);
-        $this->assertSame($metaGenerator->getNamespaces()[0], $firstNamespace);
-        $metaGenerator->addNamespace($secondNamespace);
-        $this->assertEquals(sizeof($metaGenerator->getNamespaces()), 2);
-        $this->assertSame($metaGenerator->getNamespaces()[1], $secondNamespace);
+        $firstDriver = new EntitiesDriver($this->entitiesRoot);
+        $secondDriver = new AdminEntitiesDriver($this->adminEntitiesRoot);
+        $metaGenerator->addDriver($firstDriver);
+        $this->assertEquals(sizeof($metaGenerator->getDrivers()), 1);
+        $this->assertSame($metaGenerator->getDrivers()[0], $firstDriver);
+        $metaGenerator->addDriver($secondDriver);
+        $this->assertEquals(sizeof($metaGenerator->getDrivers()), 2);
+        $this->assertSame($metaGenerator->getDrivers()[1], $secondDriver);
     }
 
 }
