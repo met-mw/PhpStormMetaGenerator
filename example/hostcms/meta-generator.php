@@ -2,9 +2,9 @@
 /**
  * Using the library as an example HostCMS
  */
-require_once('../../src/PhpStormMetaGenerator/Interfaces/DriverInterface.php');
-require_once('../../src/PhpStormMetaGenerator/Interfaces/MetaGeneratorInterface.php');
-require_once('../../src/PhpStormMetaGenerator/DriverAbstract.php');
+require_once('../../src/PhpStormMetaGenerator/Drivers/DriverInterface.php');
+require_once('../../src/PhpStormMetaGenerator/MetaGeneratorInterface.php');
+require_once('../../src/PhpStormMetaGenerator/Drivers/DriverAbstract.php');
 require_once('../../src/PhpStormMetaGenerator/MetaGenerator.php');
 require_once('../../src/PhpStormMetaGenerator/Drivers/HostCMS/DriverEntities.php');
 require_once('../../src/PhpStormMetaGenerator/Drivers/HostCMS/DriverAdminEntities.php');

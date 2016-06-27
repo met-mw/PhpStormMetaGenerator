@@ -3,8 +3,7 @@ namespace PhpStormMetaGenerator;
 
 
 use InvalidArgumentException;
-use PhpStormMetaGenerator\Interfaces\MetaGeneratorInterface;
-use PhpStormMetaGenerator\Interfaces\DriverInterface;
+use PhpStormMetaGenerator\Drivers\DriverInterface;
 
 /**
  * PhpStorm meta-file generator.

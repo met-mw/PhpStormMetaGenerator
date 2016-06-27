@@ -1,12 +1,12 @@
 <?php
-namespace PhpStormMetaGenerator\Interfaces;
+namespace PhpStormMetaGenerator\Drivers;
 
 
 /**
  * Driver interface
  *
  * Interface DriverInterface
- * @package PhpStormMetaGenerator\Interfaces
+ * @package PhpStormMetaGenerator\Drivers
  */
 interface DriverInterface
 {

@@ -2,8 +2,9 @@
 namespace PhpStormMetaGenerator\Drivers\HostCMS;
 
 
-use PhpStormMetaGenerator\DriverAbstract;
-use PhpStormMetaGenerator\Interfaces\DriverInterface;
+use PhpStormMetaGenerator\Drivers\DriverAbstract;
+use PhpStormMetaGenerator\Drivers\DriverInterface;
+
 
 /**
  * Driver for HostCMS to search classes at administrator's area.

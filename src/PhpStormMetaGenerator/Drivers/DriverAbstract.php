@@ -1,16 +1,15 @@
 <?php
-namespace PhpStormMetaGenerator;
+namespace PhpStormMetaGenerator\Drivers;
 
 
 use InvalidArgumentException;
-use PhpStormMetaGenerator\Interfaces\DriverInterface;
 
 /**
  * Abstract driver class
  * (Extend this to develop any drivers)
  *
  * Class DriverAbstract
- * @package PhpStormMetaGenerator
+ * @package PhpStormMetaGenerator\Drivers
  */
 abstract class DriverAbstract implements DriverInterface
 {

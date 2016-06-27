@@ -3,8 +3,8 @@ namespace PhpStormMetaGenerator\Drivers\HostCMS;
 
 
 use InvalidArgumentException;
-use PhpStormMetaGenerator\DriverAbstract;
-use PhpStormMetaGenerator\Interfaces\DriverInterface;
+use PhpStormMetaGenerator\Drivers\DriverAbstract;
+use PhpStormMetaGenerator\Drivers\DriverInterface;
 
 /**
  * Driver for HostCMS to search entities classes.

@@ -1,12 +1,13 @@
 <?php
-namespace PhpStormMetaGenerator\Interfaces;
+namespace PhpStormMetaGenerator;
+use PhpStormMetaGenerator\Drivers\DriverInterface;
 
 
 /**
  * Meta generator interface
  *
  * Interface MetaGeneratorInterface
- * @package PhpStormMetaGenerator\Interfaces
+ * @package PhpStormMetaGenerator
  */
 interface MetaGeneratorInterface
 {
