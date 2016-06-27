@@ -8,16 +8,16 @@ class DriverHostCMSTest extends PHPUnit_Framework_TestCase
 
     public function testSets()
     {
-        $namespace = new DriverEntities($this->root);
-        $this->assertSame($namespace->setRoot($this->root), $namespace);
+        $driver = new DriverEntities($this->root);
+        $this->assertSame($driver->setRoot($this->root), $driver);
     }
 
     public function testScan()
     {
-        $namespace = new DriverEntities($this->root);
+        $driver = new DriverEntities($this->root);
 
-        $this->assertSame($namespace->scan(), $namespace);
-        $this->assertEquals($namespace->getClasses(), ['Module1_Model', 'Module1_Module1sub_Model']);
+        $this->assertSame($driver->scan(), $driver);
+        $this->assertEquals($driver->getClasses(), ['Module1_Model', 'Module1_Module1sub_Model']);
     }
 
 }
