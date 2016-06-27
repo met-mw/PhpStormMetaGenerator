@@ -1,6 +1,7 @@
 {
     "name": "met_mw/phpstormmetagenerator",
     "type": "library",
+    "description": "PhpStorm meta-file generator (.phpstorm.meta.php).",
     "keywords": ["phpStorm", "HostCMS", "metagenerator", "meta", "generator", ".phpstorm.meta.php"],
     "license": "MIT",
     "authors": [
